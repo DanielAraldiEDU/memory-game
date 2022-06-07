@@ -22,11 +22,11 @@
 > Após a geração da matriz gabarito deverá ser criada a matriz jogo (com todas as posições vazias). Essa matriz é a matriz que será exibida e utilizada para a marcação dos pares descobertos. Uma vez que a matriz gabarito e a matriz jogo estão preparadas o jogador poderá iniciar as jogadas respeitando as seguintes regras:
 
 1. ✅ Haverá apenas um jogador jogando sozinho, “contra o programa” .
-2. ⛔ Em cada jogada, o jogador informa a posição (linha e coluna) das peças a serem “viradas” (mostradas).
+2. ✅ Em cada jogada, o jogador informa a posição (linha e coluna) das peças a serem “viradas” (mostradas).
 3. ⛔ O programa deve mostrar o valor destas peças. Caso as peças tenham o mesmo valor, estas ficam indisponíveis e aparece a mensagem “JOGADA OK”. Caso contrário, aparece a mensagem “JOGADA NOK”.
-4. ⛔ O jogador pode fazer um número de jogadas igual ao triplo dos pares. Por exemplo, para 8 pares, 24 jogadas
+4. ✅ O jogador pode fazer um número de jogadas igual ao triplo dos pares. Por exemplo, para 8 pares, 24 jogadas
 5. ⛔ O jogo encerra quando o jogador encerrar o número de jogadas ou até ele descobrir todos os pares.
-6. ⛔ Durante o jogo, o programa deve mostrar quantidade de jogadas realizadas pelo jogador.
+6. ✅ Durante o jogo, o programa deve mostrar quantidade de jogadas realizadas pelo jogador.
 7. ⛔ No encerramento deve ser apresentada uma mensagem de vitória ou derrota.
 
 **Obs.:** As peças não viradas podem ser representadas pelo número 0 (zero).

@@ -17,16 +17,16 @@ using namespace std;
 int main()
 {
   // DECLARAÇÃO DAS VARIÁVEIS
+  int matrizJogo[TAMANHO][TAMANHO] = {0};
   int matrizPrincipal[TAMANHO][TAMANHO] = {1, 4, 5, 2, 7, 2, 8, 7, 3, 6, 1, 4, 6, 5, 3, 8};
-  int matrizJogo[TAMANHO][TAMANHO] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
   int matrizGabarito[TAMANHO][TAMANHO], tipoDaMatriz, linhaAtual, colunaAtual, linhaAnterior, colunaAnterior, contador = 0, numeroJogadas = 0;
-  bool jogadorVenceu = false, jogadorPerdeu = false;
+  bool estaJogando = true;
 
   system("cls"); // LIMPA O TERMINAL AO COMEÇAR O JOGO
 
   srand(time(NULL)); // SEMENTE RANDOMICA GERADA A PARTIR DO HORÁRIO DO SISTEMA
 
-  tipoDaMatriz = 1; // GERA NÚMEROS ALEATÓRIOS ENTRE 1 e 4
+  tipoDaMatriz = rand() % 4 + 1; // GERA NÚMEROS ALEATÓRIOS ENTRE 1 e 4
 
   switch (tipoDaMatriz)
   {
@@ -75,11 +75,11 @@ int main()
     }
     break;
   default:
-    cout << "Erro ao inicializar o jogo " << tipoDaMatriz;
+    cout << "Erro ao inicializar o jogo! Tente novamente.";
     break;
   }
 
-  while (!jogadorPerdeu && !jogadorVenceu) // ENQUATO O JOGADOR NÃO PERDER E NÃO VENCER A MATRIZ JOGO SERÁ IMPRIMIDA
+  while (estaJogando) // ENQUATO O JOGADOR NÃO PERDER E NÃO VENCER A MATRIZ JOGO SERÁ IMPRIMIDA
   {
     contador++; // ADICIONA MAIS UM AO CONTADOR DE JOGADA
 
@@ -115,22 +115,21 @@ int main()
       colunaAnterior = colunaAtual; // ADICIONA O VALOR ATUAL DA COLUNA AO VALOR ANTERIOR DA COLUNA
     }
 
-    if ((linhaAtual < 0 || linhaAtual > 3) || (linhaAnterior < 0 || linhaAnterior > 3) || (colunaAtual < 0 || colunaAtual > 3) || (colunaAnterior < 0 || colunaAnterior > 3)) // SE O NÚMERO DA LINHA (ATUAL E ANTERIOR) OU DA COLUNA (ATUAL E ANTERIOR) NÃO ESTIVER ENTRE OS REPECTIVOS VALORES DA MATRIZ
+    if ((linhaAtual < 0 || linhaAtual > 3) || (colunaAtual < 0 || colunaAtual > 3)) // SE O NÚMERO DA LINHA (ATUAL E ANTERIOR) OU DA COLUNA (ATUAL E ANTERIOR) NÃO ESTIVER ENTRE OS REPECTIVOS VALORES DA MATRIZ
     {
       numeroJogadas++;                               // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
       cout << "\n\tJOGADA NOK\n";                    // MOSTRA MENSAGEM NO TERMINAL
       matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERO O REPECTIVO VALOR ANTERIOR DA MATRIZ JOGO
-      matrizJogo[linhaAtual][colunaAtual] = 0;       // ZERO O REPECTIVO VALOR ATUAL DA MATRIZ JOGO
       contador = 0;                                  // ZERO O VALOR DO CONTADOR PARA FORÇAR O USUÁRIO A DIGITAR OS VALORES NOVAMENTE
     }
     else
     {
       matrizJogo[linhaAtual][colunaAtual] = matrizGabarito[linhaAtual][colunaAtual]; // ADICIONA O VALOR DA MATRIZ GABARITO PARA A MATRIZ JOGO
 
-      if (contador != 0 && contador % 2 == 0) // SE O USUÁRIO ESTIVER NA SEGUNDA JOGADA
+      if (contador % 2 == 0) // SE O USUÁRIO ESTIVER NA SEGUNDA JOGADA
       {
-        numeroJogadas++;                                                                      // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
-        if (matrizJogo[linhaAtual][colunaAtual] == matrizJogo[linhaAnterior][colunaAnterior]) // SE O VALOR ANTERIOR É IGUAL AO VALOR ATUAL
+        numeroJogadas++;                                                                        // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
+        if ((matrizJogo[linhaAtual][colunaAtual] == matrizJogo[linhaAnterior][colunaAnterior])) // SE O VALOR ATUAL MATRIZ JOGO É IGUAL AO VALOR ANTERIOR MATRIZ JOGO
         {
           cout << "\n\tJOGADA OK\n"; // MOSTRA MENSAGEM NO TERMINAL
         }

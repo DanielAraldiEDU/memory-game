@@ -23,11 +23,11 @@
 
 1. ✅ Haverá apenas um jogador jogando sozinho, “contra o programa” .
 2. ✅ Em cada jogada, o jogador informa a posição (linha e coluna) das peças a serem “viradas” (mostradas).
-3. ⛔ O programa deve mostrar o valor destas peças. Caso as peças tenham o mesmo valor, estas ficam indisponíveis e aparece a mensagem “JOGADA OK”. Caso contrário, aparece a mensagem “JOGADA NOK”.
+3. ✅ O programa deve mostrar o valor destas peças. Caso as peças tenham o mesmo valor, estas ficam indisponíveis e aparece a mensagem “JOGADA OK”. Caso contrário, aparece a mensagem “JOGADA NOK”.
 4. ✅ O jogador pode fazer um número de jogadas igual ao triplo dos pares. Por exemplo, para 8 pares, 24 jogadas
-5. ⛔ O jogo encerra quando o jogador encerrar o número de jogadas ou até ele descobrir todos os pares.
+5. ✅ O jogo encerra quando o jogador encerrar o número de jogadas ou até ele descobrir todos os pares.
 6. ✅ Durante o jogo, o programa deve mostrar quantidade de jogadas realizadas pelo jogador.
-7. ⛔ No encerramento deve ser apresentada uma mensagem de vitória ou derrota.
+7. ✅ No encerramento deve ser apresentada uma mensagem de vitória ou derrota.
 
 **Obs.:** As peças não viradas podem ser representadas pelo número 0 (zero).
 

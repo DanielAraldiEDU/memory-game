@@ -28,14 +28,14 @@ int main()
 
   tipoDaMatriz = rand() % 4 + 1; // GERA NÚMEROS ALEATÓRIOS ENTRE 1 e 4
 
-  switch (tipoDaMatriz)
+  switch (tipoDaMatriz) // A PARTIR DO tipoDaMatriz SERÁ GERADA A MATRIZ GABARITO
   {
   case 1: // NO TIPO DE MATRIZ UM, É FEITO A CÓPIA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
     for (int i = 0; i < TAMANHO; i++)
     {
       for (int j = 0; j < TAMANHO; j++)
       {
-        matrizGabarito[i][j] = matrizPrincipal[i][j]; // ADICIONA O VALOR DA MATRIZ PRINCIPAL A MATRIZ GABARITO
+        matrizGabarito[i][j] = matrizPrincipal[i][j]; // ADICIONA O RESPECTIVO VALOR DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
       }
     }
     break;
@@ -44,25 +44,25 @@ int main()
     {
       for (int j = 0; j < TAMANHO; j++)
       {
-        matrizGabarito[i][j] = matrizPrincipal[j][i]; // ADICIONA O VALOR DA MATRIZ PRINCIPAL A MATRIZ GABARITO
+        matrizGabarito[i][j] = matrizPrincipal[j][i]; // ADICIONA O RESPECTIVO VALOR DA MATRIZ PRINCIPAL PARA A POSIÇÃO TRANSPOSTA DA MATRIZ GABARITO
       }
     }
     break;
-  case 3: // NO TIPO DE MATRIZ TRÊS, É FEITO A INVERSÃO POR LINHA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
-    for (int i = 0, k = 3; i < TAMANHO, k >= 0; i++, k--)
+  case 3:                                                 // NO TIPO DE MATRIZ TRÊS, É FEITO A INVERSÃO POR LINHA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
+    for (int i = 0, k = 3; i < TAMANHO, k >= 0; i++, k--) // A VARIÁVEL i REPRENTA A LINHA DE CIMA PARA BAIXO E A VARIÁVEL k REPRENTA A LINHA DE BAIXO PARA CIMA
     {
       for (int j = 0; j < TAMANHO; j++)
       {
-        matrizGabarito[i][j] = matrizPrincipal[k][j]; // ADICIONA O VALOR DA INVERSÃO DA LINHA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
+        matrizGabarito[i][j] = matrizPrincipal[k][j]; // ADICIONA O RESPECTIVO VALOR DA INVERSÃO DA LINHA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
       }
     }
     break;
-  case 4: // NO TIPO DE MATRIZ QUATRO, É FEITO A INVERSÃO POR COLUNA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
-    for (int i = 0, k = 3; i < TAMANHO, k >= 0; i++, k--)
+  case 4:                                                 // NO TIPO DE MATRIZ QUATRO, É FEITO A INVERSÃO POR COLUNA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
+    for (int i = 0, k = 3; i < TAMANHO, k >= 0; i++, k--) // A VARIÁVEL i REPRENTA A COLUNA DA ESQUERDA PARA A DIREITA E A VARIÁVEL k REPRENTA A COLUNA DA DIREITA PARA ESQUERDA
     {
       for (int j = 0; j < TAMANHO; j++)
       {
-        matrizGabarito[j][i] = matrizPrincipal[j][k]; // ADICIONA O VALOR DA INVERSÃO DA COLUNA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
+        matrizGabarito[j][i] = matrizPrincipal[j][k]; // ADICIONA O RESPECTIVO VALOR DA INVERSÃO DA COLUNA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
       }
     }
 
@@ -72,9 +72,9 @@ int main()
     break;
   }
 
-  while (estaJogando) // ENQUATO O JOGADOR NÃO PERDER E NÃO VENCER A MATRIZ JOGO SERÁ IMPRIMIDA
+  while (estaJogando) //  A MATRIZ JOGO SERÁ IMPRIMIDA ENQUATO O JOGADOR NÃO PERDER E NÃO VENCER
   {
-    jogadorVenceu = true; // A CADA LOOP DO WHILE O JOGADOR É DITO COM VENCEDOR
+    jogadorVenceu = true; // A CADA LOOP DO WHILE O JOGADOR É DITO COMO VENCEDOR
     contador++;           // ADICIONA MAIS UM AO CONTADOR DE JOGADA
 
     cout << "\tJOGADAS: " << numeroJogadas << "\n\n"; // MOSTRA A QUANTIDADE DE JOGADAS NO TERMINAL
@@ -83,7 +83,7 @@ int main()
     {
       for (int j = 0; j < TAMANHO; j++)
       {
-        cout << matrizJogo[i][j] << "\t"; // ADICIONA ESPAÇAMENTO ENTRE AS COLUNAS
+        cout << matrizJogo[i][j] << "\t"; // MOSTRA O RESPECTIVO VALOR DA MATRIZ JOGO E ADICIONA ESPAÇAMENTO ENTRE AS COLUNAS
       }
 
       cout << endl; // ADICIONA QUEBRA DE LINHA ENTRE AS LINHAS
@@ -99,29 +99,28 @@ int main()
 
     if (contador % 2 == 1) // SE O USUÁRIO ESTÁ NA PRIMEIRA JOGADA
     {
-      linhaAnterior = linhaAtual;   // ADICIONA O VALOR ATUAL DA LINHA AO VALOR ANTERIOR DA LINHA
-      colunaAnterior = colunaAtual; // ADICIONA O VALOR ATUAL DA COLUNA AO VALOR ANTERIOR DA COLUNA
+      linhaAnterior = linhaAtual;   // ARMAZENA A POSIÇÃO DA LINHA NA VARIÁVEL linhaAnterior
+      colunaAnterior = colunaAtual; // ARMAZENA A POSIÇÃO DA COLUNA NA VARIÁVEL colunaAnterior
     }
 
     if (matrizJogo[linhaAtual][colunaAtual] != 0) // SE O RESPECTIVO VALOR DA MATRIZ JOGO É DIFERENTE DE ZERO, OU SEJA, JÁ FOI VIRADA
     {
-      numeroJogadas++;                                // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
-      cout << "\tJOGADAS: " << numeroJogadas << "\n"; // MOSTRA A QUANTIDADE DE JOGADAS NO TERMINAL
-      cout << "\n\tJOGADA NOK\n";                     // MOSTRA MENSAGEM NO TERMINAL
-      if (contador % 2 == 0)                          // SE O USUÁRIO ESTIVER NA SEGUNDA JOGADA
+      numeroJogadas++;          // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
+      cout << "\tJOGADA NOK\n"; // MOSTRA MENSAGEM "JOGADA NOK" NO TERMINAL, OU SEJA, SE A PEÇA JÁ FOI VIRADA
+      if (contador % 2 == 0)    // SE O USUÁRIO ESTIVER NA SEGUNDA JOGADA
       {
-        matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERO O REPECTIVO VALOR ANTERIOR DA MATRIZ JOGO
+        matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERA O REPECTIVO VALOR ANTERIOR DA MATRIZ JOGO
       }
-      contador = 0; // ZERO O VALOR DO CONTADOR PARA FORÇAR O USUÁRIO A DIGITAR OS VALORES NOVAMENTE
+      contador = 0; // ZERA O VALOR DO CONTADOR PARA FORÇAR O USUÁRIO A DIGITAR OS PRÓXIMOS DOIS VALORES NOVAMENTE
     }
-    else if (linhaAtual < 0 || linhaAtual > 3 || colunaAtual < 0 || colunaAtual > 3) // SE O NÚMERO DA LINHA (ATUAL E ANTERIOR) OU DA COLUNA (ATUAL E ANTERIOR) NÃO ESTIVER ENTRE OS REPECTIVOS VALORES DA MATRIZ
+    else if (linhaAtual < 0 || linhaAtual > 3 || colunaAtual < 0 || colunaAtual > 3) // SE O NÚMERO DA LINHA OU DA COLUNA NÃO ESTIVER ENTRE OS REPECTIVOS VALORES DA MATRIZ JOGO
     {
       numeroJogadas++;                               // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
-      cout << "\n\tJOGADA NOK\n";                    // MOSTRA MENSAGEM NO TERMINAL
-      matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERO O REPECTIVO VALOR ANTERIOR DA MATRIZ JOGO
-      contador = 0;                                  // ZERO O VALOR DO CONTADOR PARA FORÇAR O USUÁRIO A DIGITAR OS VALORES NOVAMENTE
+      cout << "\tJOGADA NOK\n";                      // MOSTRA MENSAGEM "JOGADA NOK" NO TERMINAL, OU SEJA, O VALOR DA LINHA OU DA COLUNA NÃO ESTÃO ENTRE OS RESPECTIVOS VALORES DA MATRIZ JOGO
+      matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERA O REPECTIVO VALOR ANTERIOR DA MATRIZ JOGO
+      contador = 0;                                  // ZERA O VALOR DO CONTADOR PARA FORÇAR O USUÁRIO A DIGITAR OS PRÓXIMOS DOIS VALORES NOVAMENTE
     }
-    else
+    else // CASO AS JOGADAS NÃO TENHAM RESULTADOS INESPERADOS AO RECEBER A LINHA E COLUNA ATRAVÉS DO TECLADO DO JOGADOR
     {
       matrizJogo[linhaAtual][colunaAtual] = matrizGabarito[linhaAtual][colunaAtual]; // ADICIONA O VALOR DA MATRIZ GABARITO PARA A MATRIZ JOGO
 
@@ -130,12 +129,13 @@ int main()
         numeroJogadas++;                                                                      // ADICIONA MAIS UM AO NÚMERO DE JOGADAS
         if (matrizJogo[linhaAtual][colunaAtual] == matrizJogo[linhaAnterior][colunaAnterior]) // SE O VALOR ATUAL MATRIZ JOGO É IGUAL AO VALOR ANTERIOR MATRIZ JOGO
         {
-          cout << "\n\tJOGADA OK\n"; // MOSTRA MENSAGEM NO TERMINAL
+          cout << "\tJOGADA OK\n"; // MOSTRA MENSAGEM "JOGADA OK" NO TERMINAL, OU SEJA, AS PEÇAS SÃO IGUAIS
         }
         else
         {
-          cout << "\n\tJOGADA NOK\n";       // MOSTRA MENSAGEM NO TERMINAL
-          for (int i = 0; i < TAMANHO; i++) // IMPRIME A MATRIZ JOGO
+          cout << "\tJOGADA NOK\n";                         // MOSTRA MENSAGEM "JOGADA NOK" NO TERMINAL, OU SEJA, AS PEÇAS SAO DIFERENTES
+          cout << "\tJOGADAS: " << numeroJogadas << "\n\n"; // MOSTRA A QUANTIDADE DE JOGADAS NO TERMINAL
+          for (int i = 0; i < TAMANHO; i++)                 // IMPRIME A MATRIZ JOGO
           {
             for (int j = 0; j < TAMANHO; j++)
             {
@@ -146,35 +146,53 @@ int main()
           }
           system("pause");                               // PAUSA O TEMINAL
           system("cls");                                 // LIMPA O TEMINAL
-          matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERO O REPECTIVO VALOR ATUAL DA MATRIZ JOGO
-          matrizJogo[linhaAtual][colunaAtual] = 0;       // ZERO O REPECTIVO VALOR ATUAL DA MATRIZ JOGO
+          matrizJogo[linhaAnterior][colunaAnterior] = 0; // ZERA O REPECTIVO VALOR ANTERIOR DA MATRIZ JOGO
+          matrizJogo[linhaAtual][colunaAtual] = 0;       // ZERA O REPECTIVO VALOR ATUAL DA MATRIZ JOGO
         }
       }
     }
 
-    for (int i = 0; i < TAMANHO; i++) // VERIFICA A CADA LOOP SE O USUÁRIO NÃO PREECHEU O TABULEIRO
+    for (int i = 0; i < TAMANHO; i++) // VERIFICA A CADA LOOP SE O USUÁRIO TEM TODAS AS PEÇAS VIRADAS
     {
       for (int j = 0; j < TAMANHO; j++)
       {
         if (matrizJogo[i][j] == 0) // SE A PEÇA NÃO FOI VIRADA
         {
-          jogadorVenceu = false; // JOGADOR NÃO VENCEU
+          jogadorVenceu = false; // JOGADOR NÃO VENCEU, OU SEJA, AINDA NÃO VIROU TODAS AS PEÇAS
         }
       }
     }
 
-    if (numeroJogadas == 24 && !jogadorVenceu) // SE A QUANTIDADE DE JOGADAS SER IGUAL A VINTE E QUATRO E O JOGADOR NÃO VENCEU
+    if (numeroJogadas == 24 && !jogadorVenceu) // SE A QUANTIDADE DE JOGADAS FOR IGUAL A 24 E O JOGADOR NÃO VENCEU, OU SEJA, TODAS AS PEÇAS DO JOGO NÃO FORAM VIRADAS
     {
-      cout << "\tVOCÊ PERDEU" << endl; // MOSTRA A MENSAGEM DE "VOCÊ PERDEU"
-      system("pause");                 // PAUSA O TERMINAL
-      estaJogando = false;             // JOGADOR NÃO ESTÁ MAIS JOGANDO E O CÓDIGO SAI DO WHILE
+      cout << "\tVOCÊ PERDEU\n\n";      // MOSTRA A MENSAGEM DE "VOCÊ PERDEU" NO TERMINAL
+      for (int i = 0; i < TAMANHO; i++) // IMPRIME A MATRIZ JOGO
+      {
+        for (int j = 0; j < TAMANHO; j++)
+        {
+          cout << matrizJogo[i][j] << "\t"; // MOSTRA O RESPECTIVO VALOR DA MATRIZ JOGO E ADICIONA ESPAÇAMENTO ENTRE AS COLUNAS
+        }
+
+        cout << endl; // ADICIONA QUEBRA DE LINHA ENTRE AS LINHAS
+      }
+      system("pause");     // PAUSA O TERMINAL
+      estaJogando = false; // JOGADOR NÃO ESTÁ MAIS JOGANDO E O CÓDIGO SAI DO WHILE
     }
 
     if (jogadorVenceu) // SE O JOGADOR VENCEU
     {
-      cout << "\tVOCÊ GANHOU" << endl; // MOSTRA A MENSAGEM DE "VOCÊ GANHOU"
-      system("pause");                 // PAUSA O TERMINAL
-      estaJogando = false;             // JOGADOR NÃO ESTÁ MAIS JOGANDO E O CÓDIGO SAI DO WHILE
+      cout << "\tVOCÊ GANHOU\n\n";      // MOSTRA A MENSAGEM DE "VOCÊ GANHOU" NO TERMINAL
+      for (int i = 0; i < TAMANHO; i++) // IMPRIME A MATRIZ JOGO
+      {
+        for (int j = 0; j < TAMANHO; j++)
+        {
+          cout << matrizJogo[i][j] << "\t"; // MOSTRA O RESPECTIVO VALOR DA MATRIZ JOGO E ADICIONA ESPAÇAMENTO ENTRE AS COLUNAS
+        }
+
+        cout << endl; // ADICIONA QUEBRA DE LINHA ENTRE AS LINHAS
+      }
+      system("pause");     // PAUSA O TERMINAL
+      estaJogando = false; // JOGADOR NÃO ESTÁ MAIS JOGANDO E O CÓDIGO SAI DO WHILE
     }
   }
 

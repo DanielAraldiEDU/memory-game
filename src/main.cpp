@@ -65,7 +65,6 @@ int main()
         matrizGabarito[j][i] = matrizPrincipal[j][k]; // ADICIONA O RESPECTIVO VALOR DA INVERSÃO DA COLUNA DA MATRIZ PRINCIPAL PARA A MATRIZ GABARITO
       }
     }
-
     break;
   default:
     cout << "Erro ao inicializar o jogo! Tente novamente.";
